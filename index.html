@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+	<meta name="keywords" content="lirm,лирмяша,лирмчат,лирм42,лир,l4m,Степаша">
+    <meta name="description" content="Привет! Я фуллстек javascript разработчик, занимаюсь написанием сайтов, ботов и созданием плагинов для серверов minecraft на java. Свяжитесь со мной и я вам напишу сайт, бота или плагин по вашим желаниям :)">
+    <meta property="og:title" content="Портфолио">
+    <meta property="og:description" content="Привет! Я фуллстек javascript разработчик, занимаюсь написанием сайтов, ботов и созданием плагинов для серверов minecraft на java. Свяжитесь со мной и я вам напишу сайт, бота или плагин по вашим желаниям :)">
+  	<meta property="og:image" content="/main/imgs/lirm.jpg">
+    <meta property="og:url" content="lirm">
+    <title>lirm's portfolio</title>
+    <link rel="stylesheet" href="main/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <main id="page">
+        <div id="snow-container"></div>
+        <div class="hero">
+            <div class="me">
+                <br><br>
+                <img style="image-rendering: pixelated;" id="avatar" src="main/imgs/lirm.jpg">
+                <h1 class="gradient text">Привет, я @lirm42</h1>
+                <p class="text">разработчик на js</p>
+            </div>
+        </div>
+        <div class="info">
+            <div class="aboutme">
+                <div class="aboutcard">
+                    <h3 class="white"><i class="fa fa-address-card"></i> Немного обо мне</h3>
+                    <p>Я фуллстек javascript разработчик, занимаюсь написанием сайтов, ботов и созданием плагинов для серверов minecraft на java. Свяжитесь со мной и я вам напишу сайт, бота или плагин по вашим желаниям :)</p>
+                    <button class="btn" data-link="https://t.me/lirm42">Связаться</button>
+                </div>
+            </div>
+
+            <div class="projectsbtn right">
+                 <div class="pcard btn" data-link="./projects">
+                    <h3 class="white"><i class="fa fa-code"></i> Мои проекты</h3>
+                    <p>нажмите, чтобы посмотреть все мои проекты</p>
+                </div>
+            </div>
+
+            <h2>У меня</h2>
+            <div class="card" style="width: 110px;">
+                <h3 class="white"><i class="fa fa-clock"></i> <span id="time">-</span></h3>
+                <p class="white">UTC+10</p>
+            </div>
+            <div class="card">
+                <h3 class="white">
+                    <i id="wicon"></i> <span id="temperature">-</span>°C
+                </h3>
+                <p class="white" id="wtext"></p>
+            </div>
+        </div><br><br>
+        <footer>
+            <p style="color: gray; text-align: center;">© 2025 LIRM. Все права защищены DMCA.(Этот текст не имеет никакого смысла из-за домена .ru, но не смотря на это он обязателен к написанию бла-бла-бла)</p>
+        </footer>
+    </main>
+    <script>
+        function fetchWeatherData() {
+            fetch('')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('temperature').textContent = data.current.temp_c;
+                    document.getElementById('wicon').innerHTML = `<img src="https:${data.current.condition.icon}" alt="" class="weather-icon">`;
+                    document.getElementById('wtext').textContent = data.current.condition.text;
+                })
+                .catch(error => console.error('Ошибка при получении данных:', error));
+        }
+
+        fetchWeatherData();
+
+        setInterval(fetchWeatherData, 180000);
+
+        function updateTime() {
+            const timeString = new Date().toLocaleTimeString('ru-RU', { timeZone: 'Asia/Vladivostok' });
+
+            document.getElementById('time').textContent = timeString;
+        }
+
+        setInterval(updateTime, 1000);
+
+        updateTime();
+    </script>
+    <script src="main/all.js"></script>
+    <script src="main/index.js"></script>
+</body>
+</html>
