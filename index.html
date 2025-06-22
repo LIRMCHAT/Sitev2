@@ -60,7 +60,7 @@
     </main>
     <script>
         function fetchWeatherData() {
-            fetch('https://api.weatherapi.com/v1/current.json?key=0612044ce476415d89244639252206&q=Хабаровск&lang=ru')
+            fetch('https://api.weatherapi.com/v1/current.json?key=77709df7c7a845bc935211835252206&q=Хабаровск&lang=ru')
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('temperature').textContent = data.current.temp_c;
